@@ -65,6 +65,23 @@ app.route('/experts/:ename')
   )
     console.log(req.body.name)
 })
+.patch((req,res)=>{
+  Expert.updateOne(
+    {name: req.params.ename},
+    {$set: {
+      name: req.body.name,
+      address: req.body.address,
+      mobile: req.body.mobile,
+      password:req.body.password
+    }}, 
+   
+    (err)=>{
+      if (err) {res.send(err)}
+      else res.send("Updated")
+    }
+  )
+    console.log(req.body.name)
+})
 
 
 app.listen(8080, function (req, res){
