@@ -51,12 +51,11 @@ app.route('/experts/:ename')
 .put((req,res)=>{
   Expert.updateOne(
     {name: req.params.ename},
-    {$set: {
-      name: req.body.name,
-      address: req.body.address,
-      mobile: req.body.mobile,
-      password:req.body.password
-    }}, 
+    {name: req.body.name},
+    {address: req.body.address},
+    {mobile: req.body.mobile},
+    {password:req.body.password}
+    , 
    
     (err)=>{
       if (err) {res.send(err)}
